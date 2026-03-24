@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+	<meta name="theme-color" content="#1f6f78" />
+	<meta name="description" content="手机一键打开的个人课表，快速查看上课时间、地点和老师。" />
+	<title>我的课表</title>
+	<link rel="manifest" href="./manifest.json" />
+	<link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+	<div class="page-bg"></div>
+
+	<main class="app" id="app">
+		<header class="hero">
+			<p class="hero__sub">北京交通大学 · 快速课表</p>
+			<h1 class="hero__title" id="semesterTitle">我的课表</h1>
+			<p class="hero__meta" id="dateNow">加载中...</p>
+		</header>
+
+		<section class="panel" aria-labelledby="nextClassTitle">
+			<div class="panel__head">
+				<h2 id="nextClassTitle">下一节课</h2>
+				<button id="btnToday" class="btn btn--ghost" type="button">回到今天</button>
+			</div>
+			<div id="nextClass" class="next-card next-card--empty">今天没有后续课程</div>
+		</section>
+
+		<section class="panel" aria-labelledby="weekdayTitle">
+			<div class="panel__head panel__head--wrap">
+				<h2 id="weekdayTitle">本周课表</h2>
+				<div class="week-control" aria-label="当前周设置">
+					<button id="weekMinus" class="btn btn--ghost" type="button" aria-label="上一周">-</button>
+					<label for="weekInput" class="week-control__label">第</label>
+					<input id="weekInput" class="week-control__input" type="number" min="1" max="16" step="1" inputmode="numeric" />
+					<span class="week-control__label">周</span>
+					<button id="weekPlus" class="btn btn--ghost" type="button" aria-label="下一周">+</button>
+				</div>
+			</div>
+			<div id="weekHint" class="week-hint">当前显示：第4周</div>
+			<div id="weekdayTabs" class="tabs" role="tablist" aria-label="按星期切换"></div>
+			<div id="listTitle" class="list-title">今日课程</div>
+			<div id="courseList" class="course-list" aria-live="polite"></div>
+		</section>
+
+		<footer class="footer">
+			<p id="updatedAt">数据更新时间：--</p>
+			<p class="footer__tip">可直接修改 data.json 来更新课表</p>
+		</footer>
+	</main>
+
+	<script src="./app.js" defer></script>
+</body>
+</html>
